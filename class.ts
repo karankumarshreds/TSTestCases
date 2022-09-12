@@ -30,18 +30,3 @@ export abstract class MyDataStore {
         this.data.delete(key);
     }
 }
-
-// class MyClass extends MyDataStore {
-//     public set(key: string, value: string): void {
-//         this.set( key, value)
-//     }
-//     public get(key: string): string {
-//         return ""
-//     }
-//     public getAll(keys: string[]): string[] {
-//         return []
-//     }
-//     public delete(key: string): void {
-
-//     }
-// }
