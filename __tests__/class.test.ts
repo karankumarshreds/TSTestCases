@@ -1,5 +1,6 @@
 import { MyDataStore } from '../class';
 
+// a class which extends my base class
 class MyClass extends MyDataStore {}
 let c: MyClass;
 
@@ -11,7 +12,7 @@ describe('Class Tests', () => {
     it('Should set the correct value', () => {
         c.set('name', 'John');
         const result = c.get('name');
-        expect(result).toEqual('John');
+        expect(result).toEqual('John'); // this should pass
     });
 
     it('Should return empty string if value is not set', () => {
@@ -31,7 +32,7 @@ describe('Class Tests', () => {
     it('Should only return keys which are set in getAll', () => {
         c.set('address', 'abcd');
         const result = c.getAll(['address', 'city']);
-        expect(result.length).toEqual(1);
+        expect(result.length).toEqual(1); // ['abcd']
         expect(result[0]).toEqual('abcd');
     });
 
@@ -40,5 +41,14 @@ describe('Class Tests', () => {
         c.delete('name');
         const result = c.get('name');
         expect(result).toEqual('');
+    });
+
+    it('Should delete and get proper values using getAll', () => {
+        c.set('name', 'John');
+        c.set('country', 'India');
+        c.delete('name');
+        const result = c.getAll(['name', 'country']); // ['India']
+        expect(result.length).toEqual(1);
+        expect(result[0]).toEqual('India');
     });
 });
